@@ -48,10 +48,5 @@ public class Moutain
 		System.out.println("Peak index: " +getPeakIndex(m2));
 		System.out.println("Mountain?: " + isMountain(m1));
 		System.out.println("Mountain?: " + isMountain(m2));
-//		System.out.println("P1A(Sum of entries): " + arraySum(m5)); //P1 a Works
-//		System.out.println("P1B(Sum of a row): " + Arrays.toString(rowSums(m1))); //P1 b works
-//		System.out.println("P1C(Diverse matrix): " + isDiverse(m1));
-//		System.out.println("P1C(Diverse matrix): " + isDiverse(m6)); //P1 C works
-
 	}
 }
