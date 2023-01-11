@@ -54,12 +54,12 @@ public class Algorithms
 		}
 		return temp;		
 	}
-	
+
 	public static void partition(int[] a)
 	{
 		int front = 0;
 		int back = a.length -1;
-		while(front <= back)
+		while(front < back)
 		{
 			if(a[front] % 2 == 0)
 			{
@@ -70,21 +70,21 @@ public class Algorithms
 					a[front] = a[back];
 					a[back] = temp;
 					front++;
-					back++;
+					back--;
 				}
-				back--;
 			}
 			else if(a[front] % 2 != 0)
 			{
-				if(a[back] % 2 != 0)
-					front++;
-				back--;
 				front++;
+			}
+			else if(a[back] % 2 == 0)
+			{
+				back--;
 			}
 		}
 	}
-	
-	
+
+
 	public static void main(String[] args) 
 	{
 		int[] m1 = new int[] {5 ,3, 2, 9, 0};  
