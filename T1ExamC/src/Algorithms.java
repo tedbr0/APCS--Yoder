@@ -60,36 +60,32 @@ public class Algorithms
 		String[] temp = new String[list1.length + list2.length];
 		int oneCount = 0;
 		int twoCount = 0;
-		for(int i = 0; i < list1.length; i++)
+		while(oneCount < list1.length && twoCount < list2.length)
 		{
-			for(int j = 0; j < list2.length; j++)
+			if(list1[oneCount].compareTo(list2[twoCount]) < 0)
 			{
-				int compared = list1[i].compareTo(list2[j]);
-				if(compared == -1)
-				{
-					temp[i] = list1[i];
-					oneCount++;
-				}
-				else
-				{
-					temp[i] = list2[j];
-					twoCount++;
-				}
-			}	
+				temp[oneCount + twoCount] = list1[oneCount];
+				oneCount++;
+			}
+			else
+			{
+				temp[oneCount + twoCount] = list2[twoCount];
+				twoCount++;
+			}
 		}
 		//Determine which still has more then copy the leftovers into temp
-		if(oneCount != list1.length)
+		if(oneCount < list1.length)
 		{
 			for(int i = oneCount; i < temp.length; i++)
 			{
-				temp[i] = list1[oneCount + i];
+				temp[i + twoCount] = list1[i];
 			}
 		}
-		else if(twoCount != list2.length)
+		else if(twoCount < list2.length)
 		{
 			for(int i = twoCount; i < temp.length; i++)
 			{
-				temp[i] = list2[twoCount + i];
+				temp[i + oneCount] = list2[i];
 			}
 		}
 		return temp;		
