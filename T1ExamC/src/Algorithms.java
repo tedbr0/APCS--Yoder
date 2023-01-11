@@ -19,42 +19,6 @@ public class Algorithms
 		return -1;
 	}
 
-	//	public static String[] merge(String[] list1, String[] list2)
-	//	{
-	//		String[] temp = new String[list1.length + list2.length];
-	//		int oneCount = 0;
-	//		int twoCount = 0;
-	//		for(int i = 0; i < temp.length; i++)
-	//		{
-	//			int compared = list1[i].compareTo(list2[i]); //-1 if list 1 precedes list 2; 0 if same; 1 if list 2 follows list 1
-	//			if(compared == -1)
-	//			{
-	//				temp[i] = list1[i];
-	//				oneCount++;
-	//			}
-	//			else
-	//			{
-	//				temp[i] = list2[i];
-	//				twoCount++;
-	//			}
-	//		}
-	//		//Determine which still has more then copy the leftovers into temp
-	//		if(oneCount != list1.length)
-	//		{
-	//			for(int i = oneCount; i < temp.length; i++)
-	//			{
-	//				temp[i] = list1[oneCount + i];
-	//			}
-	//		}
-	//		else if(twoCount != list2.length)
-	//		{
-	//			for(int i = twoCount; i < temp.length; i++)
-	//			{
-	//				temp[i] = list2[twoCount + i];
-	//			}
-	//		}
-	//		return temp;		
-	//	}
 	public static String[] merge(String[] list1, String[] list2)
 	{
 		String[] temp = new String[list1.length + list2.length];
@@ -76,14 +40,14 @@ public class Algorithms
 		//Determine which still has more then copy the leftovers into temp
 		if(oneCount < list1.length)
 		{
-			for(int i = oneCount; i < temp.length; i++)
+			for(int i = oneCount; i < list1.length; i++)
 			{
 				temp[i + twoCount] = list1[i];
 			}
 		}
 		else if(twoCount < list2.length)
 		{
-			for(int i = twoCount; i < temp.length; i++)
+			for(int i = twoCount; i < list2.length; i++)
 			{
 				temp[i + oneCount] = list2[i];
 			}
@@ -91,6 +55,34 @@ public class Algorithms
 		return temp;		
 	}
 	
+	public static void partition(int[] a)
+	{
+		int front = 0;
+		int back = a.length -1;
+		while(front <= back)
+		{
+			if(a[front] % 2 == 0)
+			{
+				if(a[back] % 2 != 0)
+				{
+					//swap(front, back);
+					int temp = a[front];
+					a[front] = a[back];
+					a[back] = temp;
+					front++;
+					back++;
+				}
+				back--;
+			}
+			else if(a[front] % 2 != 0)
+			{
+				if(a[back] % 2 != 0)
+					front++;
+				back--;
+				front++;
+			}
+		}
+	}
 	
 	
 	public static void main(String[] args) 
@@ -103,6 +95,8 @@ public class Algorithms
 
 		System.out.println("binarySearch: " + binarySearch(m5, 9));
 		System.out.println(Arrays.toString(merge(l1, l2)));
+		partition(m1);
+		System.out.println("Partition: " + Arrays.toString(m1));
 
 	}
 }
