@@ -55,35 +55,49 @@ public class Algorithms
 		return temp;		
 	}
 
-	public static void partition(int[] a)
+//	public static void partition(int[] a)
+//	{
+//		int front = 0;
+//		int back = a.length -1;
+//		while(front < back)
+//		{
+//			if(a[front] % 2 == 0)
+//			{
+//				if(a[back] % 2 != 0)
+//				{
+//					//swap(front, back);
+//					int temp = a[front];
+//					a[front] = a[back];
+//					a[back] = temp;
+//					front++;
+//					back--;
+//				}
+//			}
+//			else if(a[front] % 2 != 0)
+//			{
+//				front++;
+//			}
+//			else if(a[back] % 2 == 0)
+//			{
+//				back--;
+//			}
+//		}
+//	}
+	
+	public static void insertionSort(int[] a)
 	{
-		int front = 0;
-		int back = a.length -1;
-		while(front < back)
+		for(int i = 1; i < a.length; i++)
 		{
-			if(a[front] % 2 == 0)
+			int temp = a[i];
+			int j = i;
+			while(j > 0 && temp < a[j-1])
 			{
-				if(a[back] % 2 != 0)
-				{
-					//swap(front, back);
-					int temp = a[front];
-					a[front] = a[back];
-					a[back] = temp;
-					front++;
-					back--;
-				}
+				a[j] = a[j-1];
+				j--;
 			}
-			else if(a[front] % 2 != 0)
-			{
-				front++;
-			}
-			else if(a[back] % 2 == 0)
-			{
-				back--;
-			}
+			a[j] = temp;	
 		}
 	}
-
 
 	public static void main(String[] args) 
 	{
@@ -94,9 +108,10 @@ public class Algorithms
 		String[] l2 = new String[] {"eleven", "nine", "one", "seven", "three"};
 
 		System.out.println("binarySearch: " + binarySearch(m5, 9));
-		System.out.println(Arrays.toString(merge(l1, l2)));
-		partition(m1);
-		System.out.println("Partition: " + Arrays.toString(m1));
-
+		System.out.println("Merge: " +Arrays.toString(merge(l1, l2)));
+		//partition(m1);
+		//System.out.println("Partition: " + Arrays.toString(m1));
+		insertionSort(m2);
+		System.out.println("Insertion sort:" + Arrays.toString(m2));
 	}
 }
